@@ -1,0 +1,23 @@
+{
+    "name": "sazik-rzn/common_mailer-yii2-component",
+    "description": "Common mailer component for Yii2",
+    "keywords": ["yii2", "mail", "component", "sazik", "email", "php"],
+    "homepage": "https://github.com/sazik-rzn/common_mailer-yii2-component",
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Vladimir Sazonov",
+            "email": "sazik.rzn@gmail.com",
+            "homepage": "http://szn-development.ru/"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": ">=2.0.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "sazik\\mailer\\": ""
+        }
+    }
+}
