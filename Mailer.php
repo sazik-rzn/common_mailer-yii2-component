@@ -17,7 +17,7 @@ class Mailer {
         return $this->message;
     }
 
-    public static function send() {
+    public function send() {
         if ($this->message && $this->url) {
             $message = $this->message->prepare();
             $this->message = false;
