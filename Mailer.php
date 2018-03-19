@@ -1,6 +1,6 @@
 <?php
 
-namespace common\components\Mailer;
+namespace sazik\mailer;
 
 class Mailer {
 
@@ -9,6 +9,8 @@ class Mailer {
      * @var Message 
      */
     public $message = false;
+    
+    public $url = false;
 
     public function compose() {
         $this->message = new Message;
@@ -16,14 +18,14 @@ class Mailer {
     }
 
     public static function send() {
-        if ($this->message) {
+        if ($this->message && $this->url) {
             $message = $this->message->prepare();
             $this->message = false;
             if ($message) {
                 $obj_to_send = [
                     'message' => json_encode($message)
                 ];
-                $result = file_get_contents('http://mailer.rumex.ru', false, stream_context_create(array(
+                $result = file_get_contents($this->url, false, stream_context_create(array(
                     'http' => array(
                         'method' => 'POST',
                         'header' => 'Content-type: application/x-www-form-urlencoded',

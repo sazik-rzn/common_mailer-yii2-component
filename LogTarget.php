@@ -1,6 +1,6 @@
 <?php
 
-namespace common\components\Mailer;
+namespace sazik\mailer;
 
 class LogTarget extends \yii\log\Target {
 
