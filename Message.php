@@ -15,7 +15,7 @@ class Message {
             $this->fromName = $this->from;
         }
         if ($this->body && $this->from && $this->fromName && !empty($this->recipients)) {
-            $message = [
+            return [
                 'subject' => $this->subject,
                 'body' => $this->body,
                 'from' => $this->from,
