@@ -41,7 +41,7 @@ class Message {
             $recipient->bcc = 1;
             $recipient = $recipient->compose();
             if ($recipient) {
-                $this->recipients[] = $recipient->compose();
+                $this->recipients[] = $recipient;
             }
         }
         return $this;
@@ -64,7 +64,7 @@ class Message {
             if ($recipient) {
                 $recipient = $recipient->compose();
                 if ($recipient) {
-                    $this->recipients[] = $recipient->compose();
+                    $this->recipients[] = $recipient;
                 }
             }
         }
@@ -96,7 +96,7 @@ class Message {
             $recipient->reply_to = 1;
             $recipient = $recipient->compose();
             if ($recipient) {
-                $this->recipients[] = $recipient->compose();
+                $this->recipients[] = $recipient;
             }
         }
         return $this;
@@ -127,7 +127,7 @@ class Message {
             $recipient->to = 1;
             $recipient = $recipient->compose();
             if ($recipient) {
-                $this->recipients[] = $recipient->compose();
+                $this->recipients[] = $recipient;
             }
         }
         return $this;
