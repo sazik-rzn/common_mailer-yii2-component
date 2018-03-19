@@ -10,13 +10,6 @@ class LogTarget extends \yii\log\Target {
      */
     public $message = [];
 
-    /**
-     * @var MailerInterface|array|string the mailer object or the application component ID of the mailer object.
-     * After the EmailTarget object is created, if you want to change this property, you should only assign it
-     * with a mailer object.
-     * Starting from version 2.0.2, this can also be a configuration array for creating the object.
-     */
-    public $mailer = 'mailer';
 
     /**
      * {@inheritdoc}
@@ -40,7 +33,7 @@ class LogTarget extends \yii\log\Target {
         $messages = array_map([$this, 'formatMessage'], $this->messages);
         $body = wordwrap(implode("\n", $messages), 70);
         $message = $this->composeMessage($body);
-        if (!$message->send($this->mailer)) {
+        if (!$message->send()) {
             throw new LogRuntimeException('Unable to export log through email!');
         }
     }
@@ -51,11 +44,14 @@ class LogTarget extends \yii\log\Target {
      * @return \yii\mail\MessageInterface $message
      */
     protected function composeMessage($body) {
-        $message = $this->mailer->compose();
-        Yii::configure($message, $this->message);
-        $message->setTextBody($body);
-
-        return $message;
+        $mailer = $this->common_mailer;
+        $message = $mailer->compose();
+        $message = new \sazik\mailer\Message;
+        $message->setBody($body);
+        $message->setFrom($this->message['from']);
+        $message->setTo($this->message['to']);
+        $message->setSubject($this->message['subject']);    
+        return $mailer;
     }
 
 }
