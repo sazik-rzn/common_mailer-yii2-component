@@ -9,7 +9,7 @@
     
     `'mailere'=>[ 
     'class'=>'sazik\mailer\Mailer',  
-    'url'=>'http://mailer.rumex.ru' 
+    'url'=>'http://mailer.youraddress.ru' 
   ]`
         
 ----------
