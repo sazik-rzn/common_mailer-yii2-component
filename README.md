@@ -6,6 +6,7 @@
  1.  composer require sazik-rzn/common_mailer-yii2-component 
  2. Configure component - add next to "components" section in yor
     common/main.php
+    
     `'mailere'=>[ 
     'class'=>'sazik\mailer\Mailer',  
     'url'=>'http://mailer.rumex.ru' 
